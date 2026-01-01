@@ -4,7 +4,7 @@
 ## 8. Implementation of passing parameters.
 # Ex.No:16
   Implement a C program to read a date in the format DD/MM/YYYY and determine whether the entered date is valid. The program should check the correctness of the day, month, and year, including leap year calculations for February.
-# Date : 
+# Date : 1.1.26
 # Aim:
  To implement a C program that validates a user-entered date using a function without parameters and without return value, ensuring the correctness of day, month, year, and leap year conditions.
 # Algorithm:
@@ -41,7 +41,62 @@
 ### Step 14: 
   Stop
 # Program:
+```#include <stdio.h>
+
+void validateDate()
+{
+    int dd, mm, yy, isLeap = 0;
+
+    printf("Enter date (DD/MM/YYYY): ");
+    scanf("%d/%d/%d", &dd, &mm, &yy);
+
+    if (yy < 1900 || yy > 9999)
+    {
+        printf("Year is not valid");
+        return;
+    }
+
+    if (mm < 1 || mm > 12)
+    {
+        printf("Month is not valid");
+        return;
+    }
+
+    if ((yy % 400 == 0) || (yy % 4 == 0 && yy % 100 != 0))
+        isLeap = 1;
+
+    if (mm == 2)
+    {
+        if ((isLeap && dd >= 1 && dd <= 29) || (!isLeap && dd >= 1 && dd <= 28))
+            printf("Date is valid");
+        else
+            printf("Date is invalid");
+    }
+    else if (mm == 4 || mm == 6 || mm == 9 || mm == 11)
+    {
+        if (dd >= 1 && dd <= 30)
+            printf("Date is valid");
+        else
+            printf("Date is invalid");
+    }
+    else
+    {
+        if (dd >= 1 && dd <= 31)
+            printf("Date is valid");
+        else
+            printf("Date is invalid");
+    }
+}
+
+int main()
+{
+    validateDate();
+    return 0;
+}
+```
 # Output:
+<img width="1403" height="684" alt="image" src="https://github.com/user-attachments/assets/672b31a3-e2e1-4eaa-85bb-36c151a129d3" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -137,7 +192,44 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+
+int max(int a, int b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+int min(int a, int b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
+
+int main()
+{
+    int num1, num2, maximum, minimum;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    maximum = max(num1, num2);
+    minimum = min(num1, num2);
+
+    printf("Maximum = %d\n", maximum);
+    printf("Minimum = %d\n", minimum);
+
+    return 0;
+}
+```
 # Output:
+<img width="1403" height="684" alt="image" src="https://github.com/user-attachments/assets/b25afe75-ab72-4aff-9e99-c5e9fc8717e6" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -185,7 +277,43 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+float celtof()
+{
+    float C, F;
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &C);
+    F = (C * 9 / 5) + 32;
+    return F;
+}
+
+float ftocel()
+{
+    float f, c;
+    printf("Enter temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    c = (f - 32) * 5 / 9;
+    return c;
+}
+
+int main()
+{
+    float fahrenheit, celsius;
+
+    fahrenheit = celtof();
+    printf("Temperature in Fahrenheit = %.2f\n", fahrenheit);
+
+    celsius = ftocel();
+    printf("Temperature in Celsius = %.2f\n", celsius);
+
+    return 0;
+}
+```
 # Output:
+<img width="1178" height="769" alt="image" src="https://github.com/user-attachments/assets/78c20301-9a4e-437e-b4ef-8c7510e6dfa5" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -220,7 +348,45 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+void convertFirstCLastC(char str[])
+{
+    int i, len = strlen(str);
+
+    str[0] = toupper(str[0]);
+    str[len - 1] = toupper(str[len - 1]);
+
+    for (i = 1; i < len - 1; i++)
+    {
+        if (str[i] == ' ')
+        {
+            str[i - 1] = toupper(str[i - 1]);
+            str[i + 1] = toupper(str[i + 1]);
+        }
+    }
+}
+
+int main()
+{
+    char str[100];
+
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
+
+    convertFirstCLastC(str);
+
+    printf("Modified String: %s", str);
+
+    return 0;
+}
+```
 # Output:
+<img width="1178" height="769" alt="image" src="https://github.com/user-attachments/assets/c505624e-5fc2-4017-8d93-b26c4121abe7" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
